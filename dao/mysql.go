@@ -3,16 +3,18 @@ package dao
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"net/url"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var DB *sql.DB
-func init()  {
+
+func init() {
 	//执行main之前 先执行init方法
-	dataSourceName := fmt.Sprintf("root:123@tcp(localhost:3306)/goblog?charset=utf8&loc=%s&parseTime=true",url.QueryEscape("Asia/Shanghai"))
+	dataSourceName := fmt.Sprintf("root:root@tcp(127.0.0.1:13316)/goblog?charset=utf8&loc=%s&parseTime=true", url.QueryEscape("Asia/Shanghai"))
 	db, err := sql.Open("mysql", dataSourceName)
 	if err != nil {
 		log.Println("连接数据库异常")
